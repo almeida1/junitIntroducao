@@ -1,10 +1,12 @@
+package br.emprestimo.testeUnitario;
+
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class Teste {
+public class EstruturaDaClasseDeTeste {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -20,3 +22,6 @@ public class Teste {
 	}
 
 }
+
+
+
