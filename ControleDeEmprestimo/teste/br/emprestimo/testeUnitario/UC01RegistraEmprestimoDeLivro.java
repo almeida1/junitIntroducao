@@ -52,7 +52,7 @@ public class UC01RegistraEmprestimoDeLivro {
 		assertNotNull(servico.empresta(livro, usuario).getDataDevolucao());
 	}
 	@Test
-	public void CT02UC01FB_registra_emprestimo_com_sucesso() {
+	public void CT02UC01FB_registra_emprestimo_com_sucesso_validacao_da_data() {
 		//cenario
 		livro = new Livro();
 		livro.setIsbn("121212");
@@ -70,6 +70,7 @@ public class UC01RegistraEmprestimoDeLivro {
 		emprestimo = servico.empresta(livro, usuario);
 		String dataObtida = emprestimo.getDataDevolucao();
 		//verificacao
+		assertNull(emprestimo);
 	    assertTrue(dataEsperada.equals(dataObtida));
 
 	}
