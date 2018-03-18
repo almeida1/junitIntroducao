@@ -8,6 +8,7 @@ public class Emprestimo {
 	private Usuario usuario;
 	private String dataEmprestimo;
 	private String dataDevolucao;
+	
 	public Livro getLivro() {
 		return livro;
 	}

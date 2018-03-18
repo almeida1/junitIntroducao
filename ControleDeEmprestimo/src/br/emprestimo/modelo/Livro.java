@@ -9,7 +9,7 @@ public class Livro {
 		return isbn;
 	}
 	public void setIsbn(String isbn) {
-		if (isbn == null){
+		if (isbn == "" | isbn == null){
 			throw new RuntimeException("ISBN invalido");
 		}
 		this.isbn = isbn;
