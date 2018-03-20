@@ -22,7 +22,6 @@ import org.junit.Test;
 
 
 public class UC01RegistraEmprestimoDeLivro {
-	
 	static private Livro livro;
 	static private Usuario usuario;
 	static private ServicoEmprestimo servico;
