@@ -10,7 +10,7 @@ import org.junit.rules.ExpectedException;
 
 import br.emprestimo.modelo.Livro;
 
-public class UC05CadastrarLivro {
+public class UC06CadastrarLivro {
 	static Livro livro;
 	@Rule
     public ExpectedException thrown = ExpectedException.none();
