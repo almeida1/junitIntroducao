@@ -10,14 +10,10 @@ import br.emprestimo.modelo.Livro;
 import br.emprestimo.modelo.Usuario;
 import br.emprestimo.servico.ServicoEmprestimo;
 
-import static org.junit.Assert.*;
-
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
 
 
 
@@ -44,18 +40,30 @@ public class UC01RegistraEmprestimoDeLivro {
 	public static void tearDownAfterClass() throws Exception {
 	}
 	@Test
-	public void CT01UC01FB_registra_emprestimo_com_sucesso() {
+	public void CT01UC01FB_registrar_emprestimo_com_sucesso() {
 		assertNotNull(servico.empresta(livro, usuario));
 	}
+	@Test(expected=RuntimeException.class)
+	public void CT02UC01FB_registrar_emprestimo_com_dados_invalidos() {
+		assertNotNull(servico.empresta(null, usuario));
+	}
 	@Test
-	public void CT02UC01FB_registra_emprestimo_com_sucesso_validacao_da_data() {
+	public void CT03UC01FB_registrar_emprestimo_com_dados_invalidos(){
+		try{
+			servico.empresta(null, usuario);
+			fail ("deveria lançar uma exceção");
+		}catch(RuntimeException e){
+			assertEquals("Dados inválidos.", e.getMessage());
+		}
+	}
+	@Test
+	public void CT04UC01FB_registrar_emprestimo_com_sucesso_validacao_da_data() {
 		//acao
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MM-YYYY");
 		String dataEsperada = new DateTime().plusDays(8).toString(fmt);
 		emprestimo = servico.empresta(livro, usuario);
 		String dataObtida = emprestimo.getDataDevolucao();
 		//verificacao
-		
 	    assertTrue(dataEsperada.equals(dataObtida));
 	}
 }
