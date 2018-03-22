@@ -31,7 +31,6 @@ public class UC01RegistraEmprestimoDeLivro {
 		usuario.setRa("11111");
 		usuario.setNome("Jose da Silva");
 		servico = new ServicoEmprestimo();
-		
 	}
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
