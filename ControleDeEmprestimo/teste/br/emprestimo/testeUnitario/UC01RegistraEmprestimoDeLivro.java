@@ -63,4 +63,8 @@ public class UC01RegistraEmprestimoDeLivro {
 		//verificacao
 	    assertTrue(dataEsperada.equals(dataObtida));
 	}
+	@Test
+	public void CT05Verificar_o_metodo_getRA() {
+		assertEquals("11111", usuario.getRa());
+	}
 }
