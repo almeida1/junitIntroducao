@@ -25,52 +25,37 @@ public class UC01RegistraEmprestimoDeLivro {
 	static private Livro livro;
 	static private Usuario usuario;
 	static private ServicoEmprestimo servico;
-	
+	static private Emprestimo emprestimo;
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-				
+		//cenario
+		livro = new Livro();
+		livro.setIsbn("121212");
+		livro.setTitulo("Engenharia de Software");
+		livro.setAutor("Pressman");
+		usuario = new Usuario();
+		usuario.setRa("11111");
+		usuario.setNome("Jose da Silva");
+		servico = new ServicoEmprestimo();
+		
 	}
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
 	@Test
 	public void CT01UC01FB_registra_emprestimo_com_sucesso() {
-		//cenario
-		livro = new Livro();
-		livro.setIsbn("121212");
-		livro.setTitulo("Engenharia de Software");
-		livro.setAutor("Pressman");
-		usuario = new Usuario();
-		usuario.setRa("11111");
-		usuario.setNome("Jose da Silva");
-		ServicoEmprestimo servico = new ServicoEmprestimo();
-		Emprestimo emprestimo=null;
-		//acao
-		emprestimo = servico.empresta(livro, usuario);
-		//verifica
-		assertNotNull(servico.empresta(livro, usuario).getDataDevolucao());
+		assertNotNull(servico.empresta(livro, usuario));
 	}
 	@Test
 	public void CT02UC01FB_registra_emprestimo_com_sucesso_validacao_da_data() {
-		//cenario
-		livro = new Livro();
-		livro.setIsbn("121212");
-		livro.setTitulo("Engenharia de Software");
-		livro.setAutor("Pressman");
-		usuario = new Usuario();
-		usuario.setRa("11111");
-		usuario.setNome("Jose da Silva");
-		ServicoEmprestimo servico = new ServicoEmprestimo();
-		Emprestimo emprestimo=null;
-		
 		//acao
 		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MM-YYYY");
 		String dataEsperada = new DateTime().plusDays(8).toString(fmt);
 		emprestimo = servico.empresta(livro, usuario);
 		String dataObtida = emprestimo.getDataDevolucao();
 		//verificacao
-		assertNull(emprestimo);
+		
 	    assertTrue(dataEsperada.equals(dataObtida));
-
 	}
 }
