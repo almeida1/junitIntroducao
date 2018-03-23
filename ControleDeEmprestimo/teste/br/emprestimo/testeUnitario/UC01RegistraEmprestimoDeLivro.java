@@ -41,7 +41,7 @@ public class UC01RegistraEmprestimoDeLivro {
 	}
 	@Test(expected=RuntimeException.class)
 	public void CT02UC01FB_registrar_emprestimo_com_dados_invalidos() {
-		assertNotNull(servico.empresta(null, usuario));
+		servico.empresta(null, usuario);
 	}
 	@Test
 	public void CT03UC01FB_registrar_emprestimo_com_dados_invalidos(){
@@ -52,18 +52,9 @@ public class UC01RegistraEmprestimoDeLivro {
 			assertEquals("Dados inválidos.", e.getMessage());
 		}
 	}
+	
 	@Test
-	public void CT04UC01FB_registrar_emprestimo_com_sucesso_validacao_da_data() {
-		//acao
-		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd-MM-YYYY");
-		String dataEsperada = new DateTime().plusDays(8).toString(fmt);
-		emprestimo = servico.empresta(livro, usuario);
-		String dataObtida = emprestimo.getDataDevolucao();
-		//verificacao
-	    assertTrue(dataEsperada.equals(dataObtida));
-	}
-	@Test
-	public void CT05Verificar_o_metodo_getRA() {
-		assertEquals("11111", usuario.getRa());
+	public void CT05Verificar_o_metodo_getIsbn() {
+		assertEquals("121212", livro.getIsbn());
 	}
 }
