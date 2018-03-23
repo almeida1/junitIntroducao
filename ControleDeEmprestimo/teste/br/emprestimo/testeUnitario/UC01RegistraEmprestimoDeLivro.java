@@ -57,4 +57,28 @@ public class UC01RegistraEmprestimoDeLivro {
 	public void CT05Verificar_o_metodo_getIsbn() {
 		assertEquals("121212", livro.getIsbn());
 	}
+	@Test
+	public void CT06Verificar_o_metodo_getIsbn() {
+		assertFalse(usuario.equals(null));
+	}
+	@Test
+	public void CT09() {
+		Usuario usuario2 = new Usuario();
+		usuario2.setNome("silva");
+		usuario2.setRa("3333");
+		assertFalse(usuario.equals(usuario2));
+	}
+	@Test(expected=RuntimeException.class)
+	public void CT07() {
+		livro.setIsbn("");
+	}
+	@Test(expected=RuntimeException.class)
+	public void CT08() {
+		livro.setIsbn(null);
+	}
+	@Test
+	public void CT10() {
+		Emprestimo umEmprestimo = servico.empresta(livro, usuario);
+		assertNotNull(umEmprestimo);
+	}
 }
