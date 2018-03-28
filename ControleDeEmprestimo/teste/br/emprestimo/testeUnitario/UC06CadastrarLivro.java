@@ -26,17 +26,17 @@ public class UC06CadastrarLivro {
 	}
 
 	@Test
-	public void CT01UC06CadastrarLivro_Verificar_o_metodo_getIsbn() {
+	public void CT01UC06CadastrarLivro_isbn_valido() {
 		assertEquals("121212", livro.getIsbn());
 	}
 	
 	
-	@Test(expected=RuntimeException.class)
-	public void CT07() {
+	@Test(expected=IllegalArgumentException.class)
+	public void CT02UC06CadastrarLivro_isbn_invalido_branco() {
 		livro.setIsbn("");
 	}
 	@Test(expected=RuntimeException.class)
-	public void CT08() {
+	public void CT03UC06CadastrarLivro_isbn_invalido_nulo() {
 		livro.setIsbn(null);
 	}
 	

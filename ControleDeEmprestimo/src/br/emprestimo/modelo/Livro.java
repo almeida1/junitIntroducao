@@ -11,7 +11,7 @@ public class Livro {
 	}
 	public void setIsbn(String isbn) {
 		if (isbn == "" | isbn == null){
-			throw new RuntimeException("ISBN invalido");
+			throw new IllegalArgumentException("ISBN invalido");
 		}
 		this.isbn = isbn;
 	}
