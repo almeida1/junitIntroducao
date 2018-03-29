@@ -45,12 +45,28 @@ public class UC06CadastrarLivro {
 	public void CT05UC06CadastrarLivro_isbn_invalido_nulo() {
 		livro.setIsbn(null);
 	}
+	@Test(expected=RuntimeException.class)
+	public void CT06UC06CadastrarLivro_titulo_invalido_nulo() {
+		livro.setTitulo(null);
+	}
+	@Test(expected=RuntimeException.class)
+	public void CT07UC06CadastrarLivro_titulo_invalido_branco() {
+		livro.setTitulo("");
+	}
+	@Test(expected=RuntimeException.class)
+	public void CT08UC06CadastrarLivro_autor_invalido_nulo() {
+		livro.setAutor(null);
+	}
+	@Test(expected=RuntimeException.class)
+	public void CT09UC06CadastrarLivro_autor_invalido_branco() {
+		livro.setAutor("");
+	}
 	@Test(expected=IllegalArgumentException.class)
-	public void CT06UC06CadastrarLivro_isbn_invalido_branco() {
+	public void CT10UC06CadastrarLivro_isbn_invalido_branco() {
 		ObtemLivro.comISBNInvalido_branco();
 	}
 	@Test(expected=IllegalArgumentException.class)
-	public void CT07UC06CadastrarLivro_isbn_nulo() {
+	public void CT11UC06CadastrarLivro_isbn_nulo() {
 		ObtemLivro.comISBNInvalido_nulo();
 	}
 
